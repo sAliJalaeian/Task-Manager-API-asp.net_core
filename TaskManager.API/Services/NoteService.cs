@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using AutoMapper;
+﻿using AutoMapper;
 using FluentValidation;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Model.Domain;

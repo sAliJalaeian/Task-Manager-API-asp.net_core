@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using System.Linq.Expressions;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Model.Domain;
 using TaskManager.API.Model.Dtos.Person;
@@ -14,18 +13,14 @@ public class PersonService : IPersonService
 {
     private IMapper Mapper { get; }
     private IGenericRepository<Person> PersonRepository { get; }
-    private IGenericRepository<Model.Domain.Task> TaskRepository { get; }
-    private IGenericRepository<Note> NoteRepository { get; }
     private PersonCreateValidator PersonCreateValidator { get; }
     private PersonUpdateValidator PersonUpdateValidator { get; }
 
-    public PersonService(IMapper mapper, IGenericRepository<Person> personRepository, IGenericRepository<Model.Domain.Task> taskRepository,
-        IGenericRepository<Note> noteRepository, PersonCreateValidator personCreateValidator, PersonUpdateValidator personUpdateValidator)
+    public PersonService(IMapper mapper, IGenericRepository<Person> personRepository,
+        PersonCreateValidator personCreateValidator, PersonUpdateValidator personUpdateValidator)
     {
         Mapper = mapper;
         PersonRepository = personRepository;
-        TaskRepository = taskRepository;
-        NoteRepository = noteRepository;
         PersonCreateValidator = personCreateValidator;
         PersonUpdateValidator = personUpdateValidator;
     }
@@ -34,23 +29,7 @@ public class PersonService : IPersonService
     {
         await PersonCreateValidator.ValidateAndThrowAsync(personCreate);
 
-        /*Expression<Func<Model.Domain.Task, bool>> taskFilter = task => personCreate.Tasks.Contains(task.Id);
-        var tasks = await TaskRepository.GetFilteredAsync(new[] { taskFilter }, null, null);
-        var missingTasks = personCreate.Tasks.Where((id) => !tasks.Any(existing => existing.Id == id));
-
-        if (missingTasks.Any())
-            throw new TasksNotFoundException(missingTasks.ToArray());
-
-        Expression<Func<Note, bool>> noteFilter = note => personCreate.Notebook.Contains(note.Id);
-        var notes = await NoteRepository.GetFilteredAsync(new[] { noteFilter }, null, null);
-        var missingNotes = personCreate.Notebook.Where((id) => !notes.Any(existing => existing.Id == id));
-
-        if (missingNotes.Any())
-            throw new NotesNotFoundException(missingNotes.ToArray());*/
-
         var person = Mapper.Map<Person>(personCreate);
-        /*person.Tasks = tasks;
-        person.Notebook = notes; */
         await PersonRepository.InsertAsync(person);
         await PersonRepository.SaveChangesAsync();
         return person.Id;
