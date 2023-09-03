@@ -29,9 +29,7 @@ public class DtoEntityMapperProfile : Profile
             .ForMember(dest => dest.Tasks, opt => opt.Ignore())
             .ForMember(dest => dest.Notebook, opt => opt.Ignore());
         CreateMap<Person, PersonDetails>();
-        /*.ForMember(dest => dest.Tasks, opt => opt.Ignore())
-        .ForMember(dest => dest.Notebook, opt => opt.Ignore())
-        .ForMember(dest => dest.Id, opt => opt.Ignore());*/
         CreateMap<Person, PersonList>();
+        CreateMap<Person, PersonGet>();
     }
 }

@@ -1,4 +1,5 @@
-﻿using TaskManager.API.Model.Dtos.Task;
+﻿using TaskManager.API.Model.Dtos.Person;
+using TaskManager.API.Model.Dtos.Task;
 
 namespace TaskManager.API.Repositories.Interface;
 
@@ -8,5 +9,6 @@ public interface ITaskService
     Task UpdateTaskAsync(TaskUpdate taskUpdate);
     Task DeleteTaskAsync(TaskDelete taskDelete);
     Task<TaskGet> GetTaskAsync(int id);
+    Task<PersonGet> GetPersonByNoteIdAsync(int id);
     Task<List<TaskGet>> GetTasksAsync();
 }

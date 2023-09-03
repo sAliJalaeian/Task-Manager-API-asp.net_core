@@ -6,26 +6,76 @@
     <projectFile profileName="IIS Express">TaskManager.API/TaskManager.API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5aac68b2-bd0f-469a-8c20-431714bff8ad" name="Changes" comment="" />
+    <list default="true" id="5aac68b2-bd0f-469a-8c20-431714bff8ad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TaskManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TaskManager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Controllers/NoteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Controllers/NoteController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Controllers/TaskController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Controllers/TaskController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Data/TaskManagerDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Data/TaskManagerDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Profiles/DtoEntityMapperProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Profiles/DtoEntityMapperProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/GenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/GenericRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/IGenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/IGenericRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/INoteService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/INoteService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/ITaskService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/ITaskService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/NoteService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/NoteService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/PersonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/PersonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/TaskService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/TaskService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/TaskManager.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/ref/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/ref/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/refint/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/refint/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/TaskManager.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/TaskManager.API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/C# Example/Rider/Task-Manager-API-asp.net_core/TaskManager.API/Services/NoteService.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2Upg5b9eAKyi6lkTILIZAVuAZ0S" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="MTHome" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.TaskManager.API: IIS Express">
+  <component name="RunManager" selected=".NET Launch Settings Profile.TaskManager.API: https">
     <configuration name="TaskManager.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TaskManager.API/TaskManager.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -81,6 +131,9 @@
       <option name="presentableId" value="Default" />
       <updated>1693641792669</updated>
       <workItem from="1693641793687" duration="414000" />
+      <workItem from="1693642539417" duration="5107000" />
+      <workItem from="1693669599713" duration="5216000" />
+      <workItem from="1693738192549" duration="14239000" />
     </task>
     <servers />
   </component>
@@ -88,7 +141,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

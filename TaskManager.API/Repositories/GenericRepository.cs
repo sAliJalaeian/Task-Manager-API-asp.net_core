@@ -76,7 +76,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return entity.Id;
     }
 
-    public async Task SaveCangesAsync()
+    public async Task SaveChangesAsync()
     {
         await DbContext.SaveChangesAsync();
     }

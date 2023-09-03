@@ -28,7 +28,7 @@ public class TaskManagerDbContext : IdentityDbContext<IdentityUser, IdentityRole
         modelBuilder.Entity<Task>().HasKey(e => e.Id);
         modelBuilder.Entity<Note>().HasKey(e => e.Id);
 
-        modelBuilder.Entity<Person>().HasMany(e => e.Tasks);
+        modelBuilder.Entity<Person>().HasMany(e => e.Tasks).WithOne(e => e.PersonTaken).OnDelete(DeleteBehavior.NoAction);
         modelBuilder.Entity<Person>().HasMany(e => e.Notebook).WithOne(e => e.PersonTaken).OnDelete(DeleteBehavior.NoAction);
         
 

@@ -46,6 +46,14 @@ public class TaskController : ControllerBase
         var task = await TaskService.GetTaskAsync(id);
         return Ok(task);
     }
+    
+    [HttpGet]
+    [Route("GetPersonByNoteId/{id}")]
+    public async Task<IActionResult> GetPersonByNoteId(int id)
+    {
+        var person = await TaskService.GetPersonByNoteIdAsync(id);
+        return Ok(person);
+    }
 
     [HttpGet]
     [Route("Get")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nS8zrN147fyKGPQftPZ/FjxwaRRTanO4z6pDGWLu5wXmehVMBcqvtmDZCvK+aZ1Re7Ivia5GJY946QKqmEisIg==",
+  "dgSpecHash": "h/vC1lUPYAMsxVosXk938ANUp+T+Vpp5snryWTwG4OgbbdJE+cI7FAPveMp0q58BSMdFMZ5b+kMyJd8oSGWr+A==",
   "success": true,
-  "projectFilePath": "D:\\C# Example\\Visual Studio\\TaskManager\\TaskManager.API\\TaskManager.API.csproj",
+  "projectFilePath": "D:\\C# Example\\Rider\\Task-Manager-API-asp.net_core\\TaskManager.API\\TaskManager.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Seyed Ali Jalaeian\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Seyed Ali Jalaeian\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

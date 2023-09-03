@@ -1,8 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Linq.Expressions;
+using AutoMapper;
 using FluentValidation;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Model.Domain;
 using TaskManager.API.Model.Dtos.Note;
+using TaskManager.API.Model.Dtos.Person;
 using TaskManager.API.Repositories.Interface;
 using TaskManager.API.Validation;
 using Task = System.Threading.Tasks.Task;
@@ -13,14 +15,16 @@ public class NoteService : INoteService
 {
     private IMapper Mapper { get; }
     private IGenericRepository<Note> NoteRepository { get; }
+    private IGenericRepository<Person> PersonRepository { get; }
     private NoteCreateValidator NoteCreateValidator { get; }
     private NoteUpdateValidator NoteUpdateValidator { get; }
 
-    public NoteService(IMapper mapper, IGenericRepository<Note> noteRepository,
+    public NoteService(IMapper mapper, IGenericRepository<Note> noteRepository, IGenericRepository<Person> personRepository,
         NoteCreateValidator noteCreateValidator, NoteUpdateValidator noteUpdateValidator)
     {
         Mapper = mapper;
         NoteRepository = noteRepository;
+        PersonRepository = personRepository;
         NoteCreateValidator = noteCreateValidator;
         NoteUpdateValidator = noteUpdateValidator;
     }
@@ -29,9 +33,15 @@ public class NoteService : INoteService
     {
         await NoteCreateValidator.ValidateAndThrowAsync(noteCreate);
 
+        var person = await PersonRepository.GetByIdAsync(noteCreate.PersonId);
+
+        if (person == null)
+            throw new PersonNotFoundException(noteCreate.PersonId);
+        
         var entity = Mapper.Map<Note>(noteCreate);
+        entity.PersonTaken = person;
         await NoteRepository.InsertAsync(entity);
-        await NoteRepository.SaveCangesAsync();
+        await NoteRepository.SaveChangesAsync();
         return entity.Id;
     }
 
@@ -42,7 +52,7 @@ public class NoteService : INoteService
         if (entity == null)
             throw new NoteNotFoundException(noteDelete.Id);
         NoteRepository.Delete(entity);
-        await NoteRepository.SaveCangesAsync();
+        await NoteRepository.SaveChangesAsync();
     }
 
     public async Task<NoteGet> GetNoteAsync(int id)
@@ -55,6 +65,17 @@ public class NoteService : INoteService
         return Mapper.Map<NoteGet>(entity);
     }
 
+    public async Task<PersonGet> GetPersonByNoteIdAsync(int id)
+    {
+        var entity = await NoteRepository.GetByIdAsync(id, (note) => note.PersonTaken);
+        if (entity == null)
+            throw new NoteNotFoundException(id);
+        var person = await PersonRepository.GetByIdAsync(entity.PersonTaken.Id);
+        if (person == null)
+            throw new PersonNotFoundException(id);
+        return Mapper.Map<PersonGet>(person);
+    }
+
     public async Task<List<NoteGet>> GetNotesAsync()
     {
         var entities = await NoteRepository.GetAsync(null, null);
@@ -64,14 +85,20 @@ public class NoteService : INoteService
     public async Task UpdateNoteAsync(NoteUpdate noteUpdate)
     {
         await NoteUpdateValidator.ValidateAndThrowAsync(noteUpdate);
+        
+        var person = await PersonRepository.GetByIdAsync(noteUpdate.PersonId);
+
+        if (person == null)
+            throw new PersonNotFoundException(noteUpdate.PersonId);
 
         var existingNote = await NoteRepository.GetByIdAsync(noteUpdate.Id);
 
         if (existingNote == null)
             throw new NoteNotFoundException(noteUpdate.Id);
 
-        var entity = Mapper.Map<Note>(noteUpdate);
-        NoteRepository.Update(entity);
-        await NoteRepository.SaveCangesAsync();
+        existingNote.Notes = noteUpdate.Notes;
+        existingNote.PersonTaken = person;
+        NoteRepository.Update(existingNote);
+        await NoteRepository.SaveChangesAsync();
     }
 }

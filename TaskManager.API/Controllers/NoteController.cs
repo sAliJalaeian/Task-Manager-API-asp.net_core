@@ -48,6 +48,14 @@ public class NoteController : ControllerBase
     }
 
     [HttpGet]
+    [Route("GetPersonByNoteId/{id}")]
+    public async Task<IActionResult> GetPersonByNoteId(int id)
+    {
+        var person = await NoteService.GetPersonByNoteIdAsync(id);
+        return Ok(person);
+    }
+
+    [HttpGet]
     [Route("Get")]
     public async Task<IActionResult> GetNotes()
     {

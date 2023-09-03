@@ -1,3 +1,3 @@
 ﻿namespace TaskManager.API.Model.Dtos.Note;
 
-public record NoteCreate(string Notes);
+public record NoteCreate(string Notes, int PersonId);

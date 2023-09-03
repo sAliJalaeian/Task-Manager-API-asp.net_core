@@ -34,7 +34,7 @@ public class PersonService : IPersonService
     {
         await PersonCreateValidator.ValidateAndThrowAsync(personCreate);
 
-        Expression<Func<Model.Domain.Task, bool>> taskFilter = task => personCreate.Tasks.Contains(task.Id);
+        /*Expression<Func<Model.Domain.Task, bool>> taskFilter = task => personCreate.Tasks.Contains(task.Id);
         var tasks = await TaskRepository.GetFilteredAsync(new[] { taskFilter }, null, null);
         var missingTasks = personCreate.Tasks.Where((id) => !tasks.Any(existing => existing.Id == id));
 
@@ -46,13 +46,13 @@ public class PersonService : IPersonService
         var missingNotes = personCreate.Notebook.Where((id) => !notes.Any(existing => existing.Id == id));
 
         if (missingNotes.Any())
-            throw new NotesNotFoundException(missingNotes.ToArray());
+            throw new NotesNotFoundException(missingNotes.ToArray());*/
 
         var person = Mapper.Map<Person>(personCreate);
-        person.Tasks = tasks;
-        person.Notebook = notes; 
+        /*person.Tasks = tasks;
+        person.Notebook = notes; */
         await PersonRepository.InsertAsync(person);
-        await PersonRepository.SaveCangesAsync();
+        await PersonRepository.SaveChangesAsync();
         return person.Id;
     }
 
@@ -64,7 +64,7 @@ public class PersonService : IPersonService
             throw new PersonNotFoundException(personDelete.Id);
 
         PersonRepository.Delete(entity);
-        await PersonRepository.SaveCangesAsync();
+        await PersonRepository.SaveChangesAsync();
     }
 
     public async Task<PersonDetails> GetPersonAsync(int id)
@@ -88,29 +88,13 @@ public class PersonService : IPersonService
     {
         await PersonUpdateValidator.ValidateAndThrowAsync(personUpdate);
 
-        Expression<Func<Model.Domain.Task, bool>> taskFilter = task => personUpdate.Tasks.Contains(task.Id);
-        var tasks = await TaskRepository.GetFilteredAsync(new[] { taskFilter }, null, null);
-        var missingTasks = personUpdate.Tasks.Where((id) => !tasks.Any(existing => existing.Id == id));
+        var existingEntity = await PersonRepository.GetByIdAsync(personUpdate.Id, (person) => person.Tasks, (person) => person.Notebook);
 
-        if (missingTasks.Any())
-            throw new TasksNotFoundException(missingTasks.ToArray());
-
-        Expression<Func<Note, bool>> noteFilter = note => personUpdate.Notebook.Contains(note.Id);
-        var notes = await NoteRepository.GetFilteredAsync(new[] { noteFilter }, null, null);
-        var missingNotes = personUpdate.Notebook.Where((id) => !notes.Any(existing => existing.Id == id));
-
-        if (missingNotes.Any())
-            throw new NotesNotFoundException(missingNotes.ToArray());
-
-        var existingEtity = await PersonRepository.GetByIdAsync(personUpdate.Id, (person) => person.Tasks, (person) => person.Notebook);
-
-        if (existingEtity == null)
+        if (existingEntity == null)
             throw new PersonNotFoundException(personUpdate.Id);
 
-        Mapper.Map(personUpdate, existingEtity);
-        existingEtity.Tasks = tasks;
-        existingEtity.Notebook = notes;
-        PersonRepository.Update(existingEtity);
-        await PersonRepository.SaveCangesAsync();
+        existingEntity.Name = personUpdate.Name;
+        PersonRepository.Update(existingEntity);
+        await PersonRepository.SaveChangesAsync();
     }
 }
