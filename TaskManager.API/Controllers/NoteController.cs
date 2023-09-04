@@ -17,7 +17,7 @@ public class NoteController : ControllerBase
 
     [HttpPost]
     [Route("Create")]
-    public async Task<IActionResult> CreateNote(NoteCreate noteCreate)
+    public async Task<IActionResult> CreateNote([FromQuery] NoteCreate noteCreate)
     {
         var id = await NoteService.CreateNoteAsync(noteCreate);
         return Ok(id);
@@ -25,7 +25,7 @@ public class NoteController : ControllerBase
 
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> UpdateNote(NoteUpdate noteUpdate)
+    public async Task<IActionResult> UpdateNote([FromQuery] NoteUpdate noteUpdate)
     {
         await NoteService.UpdateNoteAsync(noteUpdate);
         return Ok();
@@ -33,7 +33,7 @@ public class NoteController : ControllerBase
 
     [HttpDelete]
     [Route("Delete")]
-    public async Task<IActionResult> DeleteNote(NoteDelete noteDelete)
+    public async Task<IActionResult> DeleteNote([FromQuery] NoteDelete noteDelete)
     {
         await NoteService.DeleteNoteAsync(noteDelete);
         return Ok();

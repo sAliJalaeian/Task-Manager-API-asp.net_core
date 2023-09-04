@@ -37,7 +37,7 @@ public class PersonService : IPersonService
 
     public async Task DeletePersonAsync(PersonDelete personDelete)
     {
-        var entity = await PersonRepository.GetByIdAsync(personDelete.Id);
+        var entity = await PersonRepository.GetByIdAsync(personDelete.Id, (person) => person.Tasks, (person) => person.Notebook);
 
         if (entity == null)
             throw new PersonNotFoundException(personDelete.Id);

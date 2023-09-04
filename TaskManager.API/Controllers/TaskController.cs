@@ -17,7 +17,7 @@ public class TaskController : ControllerBase
 
     [HttpPost]
     [Route("Create")]
-    public async Task<IActionResult> CreateTask(TaskCreate taskCreate)
+    public async Task<IActionResult> CreateTask([FromQuery]TaskCreate taskCreate)
     {
         var id = await TaskService.CreateTaskAsync(taskCreate);
         return Ok(id);
@@ -25,7 +25,7 @@ public class TaskController : ControllerBase
 
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> UpdateTask(TaskUpdate taskUpdate)
+    public async Task<IActionResult> UpdateTask([FromQuery]TaskUpdate taskUpdate)
     {
         await TaskService.UpdateTaskAsync(taskUpdate);
         return Ok();
@@ -33,7 +33,7 @@ public class TaskController : ControllerBase
 
     [HttpDelete]
     [Route("Delete")]
-    public async Task<IActionResult> DeleteTask(TaskDelete taskDelete)
+    public async Task<IActionResult> DeleteTask([FromQuery] TaskDelete taskDelete)
     {
         await TaskService.DeleteTaskAsync(taskDelete);
         return Ok();

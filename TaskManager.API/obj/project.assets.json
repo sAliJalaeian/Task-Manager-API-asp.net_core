@@ -2076,11 +2076,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C# Example\\Rider\\Task-Manager-API-asp.net_core\\TaskManager.API\\TaskManager.API.csproj",
+      "projectUniqueName": "D:\\C# Example\\Visual Studio\\TaskManager\\TaskManager.API\\TaskManager.API.csproj",
       "projectName": "TaskManager.API",
-      "projectPath": "D:\\C# Example\\Rider\\Task-Manager-API-asp.net_core\\TaskManager.API\\TaskManager.API.csproj",
+      "projectPath": "D:\\C# Example\\Visual Studio\\TaskManager\\TaskManager.API\\TaskManager.API.csproj",
       "packagesPath": "C:\\Users\\Seyed Ali Jalaeian\\.nuget\\packages\\",
-      "outputPath": "D:\\C# Example\\Rider\\Task-Manager-API-asp.net_core\\TaskManager.API\\obj\\",
+      "outputPath": "D:\\C# Example\\Visual Studio\\TaskManager\\TaskManager.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Seyed Ali Jalaeian\\AppData\\Roaming\\NuGet\\NuGet.Config",

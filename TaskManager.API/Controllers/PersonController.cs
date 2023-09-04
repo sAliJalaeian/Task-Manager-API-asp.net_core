@@ -17,7 +17,7 @@ public class PersonController : ControllerBase
 
     [HttpPost]
     [Route("Create")]
-    public async Task<IActionResult> CreatePerson(PersonCreate personCreate)
+    public async Task<IActionResult> CreatePerson([FromQuery] PersonCreate personCreate)
     {
         var id = await PersonService.CreatePersonAsync(personCreate);
         return Ok(id);
@@ -25,7 +25,7 @@ public class PersonController : ControllerBase
 
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> UpdatePerson(PersonUpdate personUpdate)
+    public async Task<IActionResult> UpdatePerson([FromQuery] PersonUpdate personUpdate)
     {
         await PersonService.UpdatePersonAsync(personUpdate);
         return Ok();
@@ -33,7 +33,7 @@ public class PersonController : ControllerBase
 
     [HttpDelete]
     [Route("Delete")]
-    public async Task<IActionResult> DeletePerson(PersonDelete personDelete)
+    public async Task<IActionResult> DeletePerson([FromQuery] PersonDelete personDelete)
     {
         await PersonService.DeletePersonAsync(personDelete);
         return Ok();
