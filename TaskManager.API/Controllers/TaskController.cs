@@ -39,6 +39,14 @@ public class TaskController : ControllerBase
         return Ok();
     }
 
+    [HttpDelete]
+    [Route("DeleteByDeadline")]
+    public async Task<IActionResult> DeleteByDeadline([FromQuery] DateTime today)
+    {
+        await TaskService.DeleteTaskByDeadline(today);
+        return Ok();
+    }
+
     [HttpGet]
     [Route("Get/{id}")]
     public async Task<IActionResult> GetTask(int id)

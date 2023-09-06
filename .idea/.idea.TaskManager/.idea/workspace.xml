@@ -6,24 +6,39 @@
     <projectFile profileName="IIS Express">TaskManager.API/TaskManager.API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5aac68b2-bd0f-469a-8c20-431714bff8ad" name="Changes" comment="latest changes for project">
+    <list default="true" id="5aac68b2-bd0f-469a-8c20-431714bff8ad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TaskManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TaskManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Note/NoteGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Person/PersonFilter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Model/Dtos/Task/TaskGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/NoteService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/NoteService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/PersonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/PersonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Controllers/TaskController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Controllers/TaskController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/GenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/GenericRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/IGenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/IGenericRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/ITaskService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Repositories/Interface/ITaskService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/Services/TaskService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/Services/TaskService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/TaskManager.db" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/TaskManager.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/bin/Debug/net7.0/TaskManager.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/TaskManager.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/ref/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/ref/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/refint/TaskManager.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/Debug/net7.0/refint/TaskManager.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/TaskManager.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/TaskManager.API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManager.API/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManager.API/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/C# Example/Rider/Task-Manager-API-asp.net_core/TaskManager.API/Services/NoteService.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectId" id="2Upg5b9eAKyi6lkTILIZAVuAZ0S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -38,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.TaskManager.API: https">
@@ -99,7 +114,12 @@
       <workItem from="1693641793687" duration="414000" />
       <workItem from="1693642539417" duration="5107000" />
       <workItem from="1693669599713" duration="5216000" />
-      <workItem from="1693738192549" duration="14993000" />
+      <workItem from="1693738192549" duration="15188000" />
+      <workItem from="1693854084388" duration="273000" />
+      <workItem from="1693861374603" duration="606000" />
+      <workItem from="1693899118836" duration="9910000" />
+      <workItem from="1693982254531" duration="389000" />
+      <workItem from="1693982908596" duration="1630000" />
     </task>
     <task id="LOCAL-00001" summary="latest changes for project">
       <created>1693756015124</created>
@@ -108,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693756015124</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="delete unnecessary using like classes and codes">
+      <created>1693756522054</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693756522054</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +158,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="latest changes for project" />
-    <option name="LAST_COMMIT_MESSAGE" value="latest changes for project" />
+    <MESSAGE value="delete unnecessary using like classes and codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete unnecessary using like classes and codes" />
   </component>
 </project>

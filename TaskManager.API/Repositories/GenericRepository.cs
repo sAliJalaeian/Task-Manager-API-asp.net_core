@@ -25,6 +25,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         DbSet.Remove(entity);
     }
 
+    public void DeleteEntities(List<T> entities)
+    {
+        DbSet.RemoveRange(entities);
+    }
+
     public async Task<List<T>> GetAsync(int? skip, int? take, params Expression<Func<T, object>>[] includes)
     {
         IQueryable<T> query = DbSet;

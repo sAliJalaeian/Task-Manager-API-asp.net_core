@@ -55,6 +55,23 @@ namespace TaskManager.API.Services
             await TaskRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteTaskByDeadline(DateTime deadline)
+        {
+            var tasks = await TaskRepository.GetAsync(null, null);
+            
+            if (tasks.Count == 0)
+                throw new TasksNotFoundException();
+
+            /*foreach (var task in tasks)
+                if (task.DeadLine <= deadline)
+                    TaskRepository.Delete(task);*/
+            
+            var tasksToDelete = tasks.Where(t => t.DeadLine <= deadline).ToList();
+            TaskRepository.DeleteEntities(tasksToDelete);
+            
+            await TaskRepository.SaveChangesAsync();
+        }
+
         public async Task<TaskGet> GetTaskAsync(int id)
         {
             var entity = await TaskRepository.GetByIdAsync(id);
@@ -67,7 +84,7 @@ namespace TaskManager.API.Services
         
         public async Task<PersonGet> GetPersonByNoteIdAsync(int id)
         {
-            var entity = await TaskRepository.GetByIdAsync(id, (note) => note.PersonTaken);
+            var entity = await TaskRepository.GetByIdAsync(id, (task) => task.PersonTaken);
             if (entity == null)
                 throw new TaskNotFoundException(id);
             var person = await PersonRepository.GetByIdAsync(entity.PersonTaken.Id);
