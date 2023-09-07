@@ -9,4 +9,5 @@ public interface IPersonService
     Task<List<PersonDetails>> GetPersonsAsync();
     Task<PersonDetails> GetPersonAsync(int id);
     Task DeletePersonAsync(PersonDelete personDelete);
+    Task DoneTaskByIdAsync(int personId, int taskId);
 }

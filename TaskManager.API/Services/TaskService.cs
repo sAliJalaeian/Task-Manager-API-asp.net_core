@@ -6,6 +6,7 @@ using TaskManager.API.Repositories.Interface;
 using TaskManager.API.Validation;
 using TaskManager.API.Model.Domain;
 using Task = System.Threading.Tasks.Task;
+using TaskStatus = TaskManager.API.Model.Domain.TaskStatus;
 
 namespace TaskManager.API.Services
 {
@@ -39,6 +40,10 @@ namespace TaskManager.API.Services
 
             var entity = Mapper.Map<Model.Domain.Task>(taskCreate);
             entity.PersonTaken = person;
+            if (taskCreate.PersonId == null)
+                entity.TaskStatus = TaskStatus.Created;
+            else
+                entity.TaskStatus = TaskStatus.InProgress;
             await TaskRepository.InsertAsync(entity);
             await TaskRepository.SaveChangesAsync();
             return entity.Id;
@@ -55,19 +60,16 @@ namespace TaskManager.API.Services
             await TaskRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteTaskByDeadline(DateTime deadline)
+        public async Task ExpireTaskByDeadline(DateTime deadline)
         {
             var tasks = await TaskRepository.GetAsync(null, null);
             
             if (tasks.Count == 0)
                 throw new TasksNotFoundException();
-
-            /*foreach (var task in tasks)
-                if (task.DeadLine <= deadline)
-                    TaskRepository.Delete(task);*/
             
             var tasksToDelete = tasks.Where(t => t.DeadLine <= deadline).ToList();
-            TaskRepository.DeleteEntities(tasksToDelete);
+            foreach (var task in tasksToDelete)
+                task.TaskStatus = TaskStatus.Expired;
             
             await TaskRepository.SaveChangesAsync();
         }
@@ -75,7 +77,7 @@ namespace TaskManager.API.Services
         public async Task<TaskGet> GetTaskAsync(int id)
         {
             var entity = await TaskRepository.GetByIdAsync(id, task => task.PersonTaken);
-
+            
             if (entity == null)
                 throw new TaskNotFoundException(id);
 
@@ -85,6 +87,7 @@ namespace TaskManager.API.Services
         public async Task<List<TaskGet>> GetTasksAsync()
         {
             var entities = await TaskRepository.GetAsync(null, null, task => task.PersonTaken);
+            
             return Mapper.Map<List<TaskGet>>(entities);
         }
 
@@ -94,7 +97,7 @@ namespace TaskManager.API.Services
             
             var person = await PersonRepository.GetByIdAsync(taskUpdate.PersonId);
 
-            if (person == null)
+            if (person == null && taskUpdate.PersonId != null)
                 throw new PersonNotFoundException(taskUpdate.PersonId);
 
             var existingTask = await TaskRepository.GetByIdAsync(taskUpdate.Id);
@@ -105,6 +108,10 @@ namespace TaskManager.API.Services
             existingTask.PersonTaken = person;
             existingTask.Name = taskUpdate.Name;
             existingTask.DeadLine = taskUpdate.DeadLine;
+            if (taskUpdate.PersonId == null)
+                existingTask.TaskStatus = TaskStatus.Created;
+            else
+                existingTask.TaskStatus = TaskStatus.InProgress;
             TaskRepository.Update(existingTask);
             await TaskRepository.SaveChangesAsync();
         }

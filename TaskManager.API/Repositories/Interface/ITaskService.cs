@@ -7,7 +7,7 @@ public interface ITaskService
     Task<int> CreateTaskAsync(TaskCreate taskCreate);
     Task UpdateTaskAsync(TaskUpdate taskUpdate);
     Task DeleteTaskAsync(TaskDelete taskDelete);
-    Task DeleteTaskByDeadline(DateTime deadline);
+    Task ExpireTaskByDeadline(DateTime deadline);
     Task<TaskGet> GetTaskAsync(int id);
     Task<List<TaskGet>> GetTasksAsync();
 }

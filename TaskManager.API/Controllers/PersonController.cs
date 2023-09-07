@@ -54,4 +54,12 @@ public class PersonController : ControllerBase
         var persons = await PersonService.GetPersonsAsync();
         return Ok(persons);
     }
+
+    [HttpPut]
+    [Route("DoneTask")]
+    public async Task<IActionResult> DoneTask(int personId, int taskId)
+    {
+        await PersonService.DoneTaskByIdAsync(personId, taskId);
+        return Ok();
+    }
 }

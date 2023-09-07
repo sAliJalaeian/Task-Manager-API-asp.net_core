@@ -40,10 +40,10 @@ public class TaskController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("DeleteByDeadline")]
-    public async Task<IActionResult> DeleteByDeadline([FromQuery] DateTime today)
+    [Route("Expire/Deadline")]
+    public async Task<IActionResult> ExpireByDeadline([FromQuery] DateTime today)
     {
-        await TaskService.DeleteTaskByDeadline(today);
+        await TaskService.ExpireTaskByDeadline(today);
         return Ok();
     }
 

@@ -6,6 +6,7 @@ using TaskManager.API.Model.Dtos.Person;
 using TaskManager.API.Repositories.Interface;
 using TaskManager.API.Validation;
 using Task = System.Threading.Tasks.Task;
+using TaskStatus = TaskManager.API.Model.Domain.TaskStatus;
 
 namespace TaskManager.API.Services;
 
@@ -48,7 +49,7 @@ public class PersonService : IPersonService
 
     public async Task<PersonDetails> GetPersonAsync(int id)
     {
-        var entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks, (person) => person.Notebook);
+        var entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
 
         if (entity == null)
             throw new PersonNotFoundException(id);
@@ -58,9 +59,25 @@ public class PersonService : IPersonService
 
     public async Task<List<PersonDetails>> GetPersonsAsync()
     {
-        var entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks, (person) => person.Notebook);
+        var entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
 
         return Mapper.Map<List<PersonDetails>>(entities);
+    }
+
+    public async Task DoneTaskByIdAsync(int personId, int taskId)
+    {
+        var entity = await PersonRepository.GetByIdAsync(personId, person => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)));
+
+        if (entity == null)
+            throw new PersonNotFoundException(personId);
+
+        var task = entity.Tasks.Where(task => task.Id == taskId).FirstOrDefault();
+
+        if (task == null)
+            throw new TaskNotFoundException(taskId);
+
+        task.TaskStatus = TaskStatus.Expired;
+        await PersonRepository.SaveChangesAsync();
     }
 
     public async Task UpdatePersonAsync(PersonUpdate personUpdate)
