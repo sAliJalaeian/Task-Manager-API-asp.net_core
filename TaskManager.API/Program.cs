@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TaskManager.API;
 using TaskManager.API.Data;
 using TaskManager.API.Model.Domain;
@@ -9,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 DIConfiguration.RegisterServices(builder.Services);
-builder.Services.AddDbContext<TaskManagerDbContext>();
+var dbfilename = Environment.GetEnvironmentVariable("DB_FILENAME");
+builder.Services.AddDbContext<TaskManagerDbContext>(options => options.UseSqlite($"Filename={dbfilename}"));
 builder.Services.AddScoped<IGenericRepository<Task>, GenericRepository<Task>>();
 builder.Services.AddScoped<IGenericRepository<Note>, GenericRepository<Note>>();
 builder.Services.AddScoped<IGenericRepository<Person>, GenericRepository<Person>>();

@@ -18,7 +18,7 @@ public class TaskManagerDbContext : IdentityDbContext<IdentityUser, IdentityRole
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Filename=TaskManager.db");
+        //optionsBuilder.UseSqlite("Filename=TaskManager.db");
         base.OnConfiguring(optionsBuilder);
     }
 
