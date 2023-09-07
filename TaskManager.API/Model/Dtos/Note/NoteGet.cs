@@ -1,3 +1,5 @@
-﻿namespace TaskManager.API.Model.Dtos.Note;
+﻿using TaskManager.API.Model.Dtos.Person;
 
-public record NoteGet(int Id, string Notes);
+namespace TaskManager.API.Model.Dtos.Note;
+
+public record NoteGet(int Id, string Notes, int PersonTakenId);

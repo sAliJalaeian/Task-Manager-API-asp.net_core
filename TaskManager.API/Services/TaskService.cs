@@ -5,7 +5,6 @@ using TaskManager.API.Model.Dtos.Task;
 using TaskManager.API.Repositories.Interface;
 using TaskManager.API.Validation;
 using TaskManager.API.Model.Domain;
-using TaskManager.API.Model.Dtos.Person;
 using Task = System.Threading.Tasks.Task;
 
 namespace TaskManager.API.Services
@@ -74,28 +73,17 @@ namespace TaskManager.API.Services
 
         public async Task<TaskGet> GetTaskAsync(int id)
         {
-            var entity = await TaskRepository.GetByIdAsync(id);
+            var entity = await TaskRepository.GetByIdAsync(id, task => task.PersonTaken);
 
             if (entity == null)
                 throw new TaskNotFoundException(id);
 
             return Mapper.Map<TaskGet>(entity);
         }
-        
-        public async Task<PersonGet> GetPersonByNoteIdAsync(int id)
-        {
-            var entity = await TaskRepository.GetByIdAsync(id, (task) => task.PersonTaken);
-            if (entity == null)
-                throw new TaskNotFoundException(id);
-            var person = await PersonRepository.GetByIdAsync(entity.PersonTaken.Id);
-            if (person == null)
-                throw new PersonNotFoundException(id);
-            return Mapper.Map<PersonGet>(person);
-        }
 
         public async Task<List<TaskGet>> GetTasksAsync()
         {
-            var entities = await TaskRepository.GetAsync(null, null);
+            var entities = await TaskRepository.GetAsync(null, null, task => task.PersonTaken);
             return Mapper.Map<List<TaskGet>>(entities);
         }
 

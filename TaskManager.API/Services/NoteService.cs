@@ -3,7 +3,6 @@ using FluentValidation;
 using TaskManager.API.Exceptions;
 using TaskManager.API.Model.Domain;
 using TaskManager.API.Model.Dtos.Note;
-using TaskManager.API.Model.Dtos.Person;
 using TaskManager.API.Repositories.Interface;
 using TaskManager.API.Validation;
 using Task = System.Threading.Tasks.Task;
@@ -56,7 +55,7 @@ public class NoteService : INoteService
 
     public async Task<NoteGet> GetNoteAsync(int id)
     {
-        var entity = await NoteRepository.GetByIdAsync(id);
+        var entity = await NoteRepository.GetByIdAsync(id, note => note.PersonTaken);
 
         if (entity == null)
             throw new NoteNotFoundException(id);
@@ -64,20 +63,9 @@ public class NoteService : INoteService
         return Mapper.Map<NoteGet>(entity);
     }
 
-    public async Task<PersonGet> GetPersonByNoteIdAsync(int id)
-    {
-        var entity = await NoteRepository.GetByIdAsync(id, (note) => note.PersonTaken);
-        if (entity == null)
-            throw new NoteNotFoundException(id);
-        var person = await PersonRepository.GetByIdAsync(entity.PersonTaken.Id);
-        if (person == null)
-            throw new PersonNotFoundException(id);
-        return Mapper.Map<PersonGet>(person);
-    }
-
     public async Task<List<NoteGet>> GetNotesAsync()
     {
-        var entities = await NoteRepository.GetAsync(null, null);
+        var entities = await NoteRepository.GetAsync(null, null, note => note.PersonTaken);
         return Mapper.Map<List<NoteGet>>(entities);
     }
 

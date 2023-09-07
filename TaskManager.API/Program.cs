@@ -10,8 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 DIConfiguration.RegisterServices(builder.Services);
-var dbfilename = Environment.GetEnvironmentVariable("DB_FILENAME");
-builder.Services.AddDbContext<TaskManagerDbContext>(options => options.UseSqlite($"Filename={dbfilename}"));
+//var dbfilename = Environment.GetEnvironmentVariable("DB_FILENAME");
+builder.Services.AddDbContext<TaskManagerDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("TaskManagerConnectionString")));
 builder.Services.AddScoped<IGenericRepository<Task>, GenericRepository<Task>>();
 builder.Services.AddScoped<IGenericRepository<Note>, GenericRepository<Note>>();
 builder.Services.AddScoped<IGenericRepository<Person>, GenericRepository<Person>>();
@@ -33,7 +34,8 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<TaskManagerDbContext>();
-    dbContext.Database.EnsureCreated();
+    //dbContext.Database.EnsureCreated();
+    dbContext.Database.Migrate();
 }
 
 app.UseMiddleware<ExceptionMiddleware>();

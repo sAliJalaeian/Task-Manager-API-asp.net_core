@@ -16,12 +16,6 @@ public class TaskManagerDbContext : IdentityDbContext<IdentityUser, IdentityRole
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        //optionsBuilder.UseSqlite("Filename=TaskManager.db");
-        base.OnConfiguring(optionsBuilder);
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Person>().HasKey(e => e.Id);
@@ -29,8 +23,8 @@ public class TaskManagerDbContext : IdentityDbContext<IdentityUser, IdentityRole
         modelBuilder.Entity<Note>().HasKey(e => e.Id);
 
         modelBuilder.Entity<Person>().HasMany(e => e.Tasks).WithOne(e => e.PersonTaken).OnDelete(DeleteBehavior.SetNull);
-        modelBuilder.Entity<Person>().HasMany(e => e.Notebook).WithOne(e => e.PersonTaken);//.OnDelete(DeleteBehavior.NoAction);
-        
+        modelBuilder.Entity<Person>().HasMany(e => e.Notebook).WithOne(e => e.PersonTaken);
+
         base.OnModelCreating(modelBuilder);
     }
 }
