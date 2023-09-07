@@ -30,11 +30,12 @@ namespace TaskManager.API.Services
         public async Task<int> CreateTaskAsync(TaskCreate taskCreate)
         {
             await TaskCreateValidator.ValidateAndThrowAsync(taskCreate);
-
+            
             var person = await PersonRepository.GetByIdAsync(taskCreate.PersonId);
 
-            if (person == null)
+            if (person == null && taskCreate.PersonId != null)
                 throw new PersonNotFoundException(taskCreate.PersonId);
+            
 
             var entity = Mapper.Map<Model.Domain.Task>(taskCreate);
             entity.PersonTaken = person;

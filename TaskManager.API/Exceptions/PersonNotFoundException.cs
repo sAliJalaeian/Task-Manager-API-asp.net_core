@@ -5,13 +5,13 @@ namespace TaskManager.API.Exceptions
     [Serializable]
     public class PersonNotFoundException : Exception
     {
-        public int Id { get; }
+        public int? Id { get; }
 
         public PersonNotFoundException()
         {
         }
 
-        public PersonNotFoundException(int id)
+        public PersonNotFoundException(int? id)
         {
             Id = id;
         }

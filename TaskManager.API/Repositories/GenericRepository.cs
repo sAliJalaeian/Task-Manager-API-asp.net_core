@@ -44,7 +44,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return await query.ToListAsync();
     }
 
-    public async Task<T?> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+    public async Task<T?> GetByIdAsync(int? id, params Expression<Func<T, object>>[] includes)
     {
         IQueryable<T> query = DbSet;
 
