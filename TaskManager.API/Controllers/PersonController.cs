@@ -31,35 +31,35 @@ public class PersonController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> DeletePerson([FromQuery] PersonDelete personDelete)
-    {
-        await PersonService.DeletePersonAsync(personDelete);
-        return Ok();
-    }
-
-    [HttpGet]
-    [Route("Get/{id}")]
-    public async Task<IActionResult> GetPerson(int id)
-    {
-        var person = await PersonService.GetPersonAsync(id);
-        return Ok(person);
-    }
-
-    [HttpGet]
-    [Route("Get")]
-    public async Task<IActionResult> GetPersons()
-    {
-        var persons = await PersonService.GetPersonsAsync();
-        return Ok(persons);
-    }
-
     [HttpPut]
     [Route("DoneTask")]
     public async Task<IActionResult> DoneTask(int personId, int taskId)
     {
         await PersonService.DoneTaskByIdAsync(personId, taskId);
         return Ok();
+    }
+
+    /*[HttpDelete]
+    [Route("Delete")]
+    public async Task<IActionResult> DeletePerson([FromQuery] PersonDelete personDelete)
+    {
+        await PersonService.DeletePersonAsync(personDelete);
+        return Ok();
+    }*/
+
+    [HttpGet]
+    [Route("Get/{id}")]
+    public async Task<IActionResult> GetPerson(int id, bool? filterTask)
+    {
+        var person = await PersonService.GetPersonAsync(id, filterTask);
+        return Ok(person);
+    }
+
+    [HttpGet]
+    [Route("Get")]
+    public async Task<IActionResult> GetPersons([FromQuery] bool? filterTask)
+    {
+        var persons = await PersonService.GetPersonsAsync(filterTask);
+        return Ok(persons);
     }
 }

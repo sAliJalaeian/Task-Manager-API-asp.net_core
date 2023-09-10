@@ -13,5 +13,6 @@ public enum TaskStatus
 {
     Created,
     InProgress,
+    Done,
     Expired
 }

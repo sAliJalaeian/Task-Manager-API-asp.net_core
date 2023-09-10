@@ -11,23 +11,18 @@ public class DtoEntityMapperProfile : Profile
 {
     public DtoEntityMapperProfile()
     {
-        CreateMap<TaskCreate, Task>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<TaskCreate, Task>();
         CreateMap<TaskUpdate, Task>();
         CreateMap<Task, TaskGet>();
+        CreateMap<Task, TaskGetForPerson>();
 
-        CreateMap<NoteCreate, Note>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<NoteCreate, Note>();
         CreateMap<NoteUpdate, Note>();
         CreateMap<Note, NoteGet>();
+        CreateMap<Note, NoteGetForPerson>();
 
-        CreateMap<PersonCreate, Person>()
-            .ForMember(dest => dest.Tasks, opt => opt.Ignore())
-            .ForMember(dest => dest.Notebook, opt => opt.Ignore())
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
-        CreateMap<PersonUpdate, Person>()
-            .ForMember(dest => dest.Tasks, opt => opt.Ignore())
-            .ForMember(dest => dest.Notebook, opt => opt.Ignore());
+        CreateMap<PersonCreate, Person>();
+        CreateMap<PersonUpdate, Person>();
         CreateMap<Person, PersonDetails>();
         CreateMap<Person, PersonList>();
         CreateMap<Person, PersonGet>();

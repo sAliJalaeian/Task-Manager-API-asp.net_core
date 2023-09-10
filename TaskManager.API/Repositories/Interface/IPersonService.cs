@@ -6,8 +6,8 @@ public interface IPersonService
 {
     Task<int> CreatePersonAsync(PersonCreate personCreate);
     Task UpdatePersonAsync(PersonUpdate personUpdate);
-    Task<List<PersonDetails>> GetPersonsAsync();
-    Task<PersonDetails> GetPersonAsync(int id);
+    Task<List<PersonDetails>> GetPersonsAsync(bool? filterTask);
+    Task<PersonDetails> GetPersonAsync(int id, bool? filterTask);
     Task DeletePersonAsync(PersonDelete personDelete);
     Task DoneTaskByIdAsync(int personId, int taskId);
 }

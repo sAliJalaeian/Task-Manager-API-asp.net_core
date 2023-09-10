@@ -31,13 +31,13 @@ public class NoteController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete]
+    /*[HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> DeleteNote([FromQuery] NoteDelete noteDelete)
     {
         await NoteService.DeleteNoteAsync(noteDelete);
         return Ok();
-    }
+    }*/
 
     [HttpGet]
     [Route("Get/{id}")]

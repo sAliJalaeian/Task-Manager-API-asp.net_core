@@ -49,6 +49,23 @@ namespace TaskManager.API.Services
             return entity.Id;
         }
 
+        public async Task GiveTaskToPersonAsync(int taskId, int personId)
+        {
+            var entity = await TaskRepository.GetByIdAsync(taskId);
+
+            if (entity == null)
+                throw new TaskNotFoundException(taskId);
+
+            var person = await PersonRepository.GetByIdAsync(personId, task => task.Tasks);
+
+            if (person == null)
+                throw new PersonNotFoundException(personId);
+           
+            person.Tasks.Add(entity);
+            entity.TaskStatus = TaskStatus.InProgress;
+            await TaskRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteTaskAsync(TaskDelete taskDelete)
         {
             var entity = await TaskRepository.GetByIdAsync(taskDelete.Id);

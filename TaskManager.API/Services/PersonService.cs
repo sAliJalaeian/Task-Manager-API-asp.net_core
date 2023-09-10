@@ -47,19 +47,32 @@ public class PersonService : IPersonService
         await PersonRepository.SaveChangesAsync();
     }
 
-    public async Task<PersonDetails> GetPersonAsync(int id)
+    public async Task<PersonDetails> GetPersonAsync(int id, bool? filterTask)
     {
-        var entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
-
+        var entity = new Person();
+                
+        if (filterTask == null)
+            entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress) || task.TaskStatus.Equals(TaskStatus.Done)), (person) => person.Notebook);
+        else if (filterTask == true)
+            entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.Done)), (person) => person.Notebook);
+        else
+            entity = await PersonRepository.GetByIdAsync(id, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
         if (entity == null)
             throw new PersonNotFoundException(id);
 
         return Mapper.Map<PersonDetails>(entity);
     }
 
-    public async Task<List<PersonDetails>> GetPersonsAsync()
+    public async Task<List<PersonDetails>> GetPersonsAsync(bool? filterTask)
     {
-        var entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
+        var entities = new List<Person>();
+
+        if (filterTask == null)
+            entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress) || task.TaskStatus.Equals(TaskStatus.Done)), (person) => person.Notebook);
+        else if (filterTask == true)
+            entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.Done)), (person) => person.Notebook);
+        else
+            entities = await PersonRepository.GetAsync(null, null, (person) => person.Tasks.Where(task => task.TaskStatus.Equals(TaskStatus.InProgress)), (person) => person.Notebook);
 
         return Mapper.Map<List<PersonDetails>>(entities);
     }
@@ -76,7 +89,7 @@ public class PersonService : IPersonService
         if (task == null)
             throw new TaskNotFoundException(taskId);
 
-        task.TaskStatus = TaskStatus.Expired;
+        task.TaskStatus = TaskStatus.Done;
         await PersonRepository.SaveChangesAsync();
     }
 

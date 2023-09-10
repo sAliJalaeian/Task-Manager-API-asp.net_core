@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using TaskManager.API.Model.Dtos.Task;
 using TaskManager.API.Repositories.Interface;
 
@@ -31,19 +32,29 @@ public class TaskController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete]
+    [HttpPut]
+    [Route("GiveTaskToPerson")]
+    public async Task<IActionResult> GiveTaskToPerson(int taskId, int personId)
+    {
+        await TaskService.GiveTaskToPersonAsync(taskId, personId);
+        return Ok();
+    }
+
+    /*[HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> DeleteTask([FromQuery] TaskDelete taskDelete)
     {
         await TaskService.DeleteTaskAsync(taskDelete);
         return Ok();
-    }
+    }*/
 
-    [HttpDelete]
+    [HttpPut]
     [Route("Expire/Deadline")]
-    public async Task<IActionResult> ExpireByDeadline([FromQuery] DateTime today)
+    public async Task<IActionResult> ExpireByDeadline()
     {
-        await TaskService.ExpireTaskByDeadline(today);
+        PersianCalendar pc = new PersianCalendar();
+        var currentDate = DateTime.Now;
+        await TaskService.ExpireTaskByDeadline(new DateTime(pc.GetYear(currentDate), pc.GetMonth(currentDate), pc.GetDayOfMonth(currentDate)));
         return Ok();
     }
 
