@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+
 namespace TaskManager.API.Model.Domain;
 
 public class Person : BaseEntity
